@@ -1,10 +1,14 @@
 const express = require('express');
 const app = express();
+app.use(express.json());
 
-require('')
+require('./db/connection');
+const User = require('./Models/User')
 
 app.post("/", async(req,res) => {
-    console.log("port run");
+    let user = new Users(req.body);
+    let result = await user.save();
+    res.send(result);
 })
 
 app.listen(4000);
